@@ -1,4 +1,4 @@
-const initialState = [{name: "Banana", price: 7.99, id: 1},{name: "Maçã", price: 5.99, id: 2},{name: "Morango", price: 6.99, id: 3}]
+const initialState = [{name: "Banana", price: 7.99, id: 1},{name: "Melancia", price: 5.99, id: 2},{name: "Melão", price: 6.99, id: 3}]
 
 const fruitsReducer = (state = initialState, action) => {
     console.log(action)
