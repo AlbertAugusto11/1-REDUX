@@ -4,9 +4,13 @@ import { delFruit } from './store/modules/fruits/actions.js';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import EditFruit from "./EditFruit.jsx";
+import { addName } from "./store/modules/name/actions.js";
+import { contar } from "./store/modules/contador/actions.js";
 
 function App() {
   const fruits = useSelector((state) => state.fruits)
+  const autor = useSelector((state) => state.autor)
+  const contador = useSelector((state) => state.contador)
   const [editF, setEditF] = useState(null)
   const {register, reset, handleSubmit} = useForm()
   const dispatch = useDispatch()
@@ -18,10 +22,21 @@ function App() {
   const handleDelFruit = (id) =>{
     dispatch(delFruit(id))
   }
+  const handleName = (name) => {
+    dispatch(addName(name))
+  }
+  const handleContador = () => {
+    dispatch(contar())
+  }
 
   return (
     <div>
       <h2>Meu Primeiro Redux</h2>
+      <span>AUTOR: {autor.name}</span>
+      <button onClick={() => {
+        let a = prompt("Digite o Autor")
+        handleName(a)
+      }}>{autor.name == "" ? "Adicionar Autor" : "Editar Autor"}</button>
       <ul>
         <h3>Minha Lista de Frutas</h3>
         {fruits.map(element => {
@@ -43,6 +58,8 @@ function App() {
           <button>Adicionar Fruta</button>
         </form>
         {editF != null ? <EditFruit editF={editF} setEditF= {setEditF}/> : null}
+        <h1>{contador}</h1>
+        <button onClick={() => handleContador()}>ADD + 1</button>
     </div>
   )
 }
