@@ -10,19 +10,13 @@ function App() {
   const [editF, setEditF] = useState(null)
   const {register, reset, handleSubmit} = useForm()
   const dispatch = useDispatch()
+  
   const handleAddFruit = (formData) => {
     dispatch(addFruit({...formData, id: crypto.randomUUID()}))
     reset()
   }
   const handleDelFruit = (id) =>{
     dispatch(delFruit(id))
-  }
-
-  const editFruit2 = (element) =>{
-    let a = prompt("Digite o Nome")
-    let b = prompt("Digite o Preço")
-    let c = {...element, name: a, price: b}
-    return c
   }
 
   return (

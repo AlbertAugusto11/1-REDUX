@@ -14,7 +14,7 @@ export const EditFruit = ({editF, setEditF}) => {
     const handleEditFruit = (formData) =>{
         dispatch(editFruit(formData))
         setEditF(null)
-      }
+    }
 
     return(
         <>
