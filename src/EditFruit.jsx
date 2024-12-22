@@ -25,7 +25,7 @@ export const EditFruit = ({editF, setEditF}) => {
                 <input id="name" type="text" {...register ("name")} />
                 <label htmlFor="price">Preço</label>
                 <input id="price" type="text" {...register ("price")} />
-                <button>Adicionar Fruta</button>
+                <button>Salvar Alterações</button>
             </form>
         </>
     )
