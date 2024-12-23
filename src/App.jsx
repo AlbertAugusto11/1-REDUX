@@ -6,6 +6,7 @@ import { useState } from "react";
 import EditFruit from "./EditFruit.jsx";
 import { addName } from "./store/modules/name/actions.js";
 import { contar } from "./store/modules/contador/actions.js";
+import { contarNegative } from "./store/modules/contador/actions.js";
 
 function App() {
   const fruits = useSelector((state) => state.fruits)
@@ -27,6 +28,9 @@ function App() {
   }
   const handleContador = () => {
     dispatch(contar())
+  }
+  const handleContNegative = () => {
+    dispatch(contarNegative())
   }
 
   return (
@@ -59,7 +63,8 @@ function App() {
         </form>
         {editF != null ? <EditFruit editF={editF} setEditF= {setEditF}/> : null}
         <h1>{contador}</h1>
-        <button onClick={() => handleContador()}>ADD + 1</button>
+        <button onClick={() => handleContador()}>+</button>
+        <button onClick={() => handleContNegative()}>-</button>
     </div>
   )
 }
