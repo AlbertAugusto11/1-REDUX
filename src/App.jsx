@@ -34,13 +34,15 @@ function App() {
   }
 
   return (
-    <div>
-      <h2>Meu Primeiro Redux</h2>
-      <span>AUTOR: {autor.name}</span>
-      <button onClick={() => {
-        let a = prompt("Digite o Autor")
-        handleName(a)
-      }}>{autor.name == "" ? "Adicionar Autor" : "Editar Autor"}</button>
+    <div className="div__main">
+      <div className="div__header">
+        <h1>Meu Primeiro Redux</h1>
+        <span>AUTOR: {autor.name}</span>
+        <button onClick={() => {
+          let a = prompt("Digite o Autor").toUpperCase()
+          handleName(a)
+        }}>{autor.name == "" ? "Adicionar Autor" : "Editar Autor"}</button>
+      </div>
       <ul>
         <h3>Minha Lista de Frutas</h3>
         {fruits.map(element => {
@@ -54,17 +56,19 @@ function App() {
           )
         })}
       </ul>
-        <form onSubmit={handleSubmit(handleAddFruit)}>
-          <label htmlFor="name">Nome da Fruta</label>
-          <input id="name" type="text" {...register ("name")} required/>
-          <label htmlFor="price">Preço</label>
-          <input id="price" type="text" {...register ("price")} required/>
-          <button>Adicionar Fruta</button>
-        </form>
-        {editF != null ? <EditFruit editF={editF} setEditF= {setEditF}/> : null}
+      <form onSubmit={handleSubmit(handleAddFruit)}>
+        <label htmlFor="name">Nome da Fruta</label>
+        <input id="name" type="text" {...register ("name")} required/>
+        <label htmlFor="price">Preço</label>
+        <input id="price" type="text" {...register ("price")} required/>
+        <button>Adicionar Fruta</button>
+      </form>
+      {editF != null ? <EditFruit editF={editF} setEditF= {setEditF}/> : null}
+      <div className="div__contador">
         <h1>{contador}</h1>
         <button onClick={() => handleContador()}>+</button>
         <button onClick={() => handleContNegative()}>-</button>
+      </div>
     </div>
   )
 }
